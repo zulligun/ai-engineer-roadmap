@@ -11,3 +11,7 @@ __pycache__/
 
 # OS files
 .DS_Store
+
+# test file
+ml-from-scratch/scripts/test.py
+

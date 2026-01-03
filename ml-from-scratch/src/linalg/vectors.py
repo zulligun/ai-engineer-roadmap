@@ -22,3 +22,9 @@ def unit(a: np.ndarray) -> np.ndarray:
     if n == 0:
         raise ValueError(f"Norm is {n}, this vector has no magnitude or direction.")
     return a / n
+
+
+def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
+    a = np.asarray(a)
+    b = np.asarray(b)
+    return dot(unit(a), unit(b))

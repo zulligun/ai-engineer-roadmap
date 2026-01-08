@@ -25,3 +25,16 @@ class LinearRegression:
         # update weights and bias
         self.w -= lr * grad_w
         self.b -= lr * grad_b
+
+    def train_batch(self, X: np.ndarray, y: np.ndarray, lr: float = 0.001):
+        X = np.asarray(X)
+        y = np.asarray(y)
+
+        y_pred = np.array([self.predict(x) for x in X])
+        errors = y_pred - y
+
+        grad_w = 2 * np.mean(errors[:, None] * X, axis=0)
+        grad_b = 2 * np.mean(errors)
+
+        self.w -= lr * grad_w
+        self.b -= lr * grad_b

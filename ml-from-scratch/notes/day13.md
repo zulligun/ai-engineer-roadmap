@@ -40,3 +40,4 @@ where:
 ## Key Insight
 
 Logistic regression learns by propagating a probabilistic error signal backward through the model and updating parameters to reduce cross-entropy loss.
+Correction

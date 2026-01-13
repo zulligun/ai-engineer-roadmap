@@ -15,3 +15,11 @@ class LogisticRegression:
         x = np.asarray(x)
         z = dot(self.w, x) + self.b
         return sigmoid(z)
+
+    def train_step(self, x: np.ndarray, y: int, lr: float = 0.01):
+        x = np.asarray(x).reshape(-1)
+
+        p = self.predict_proba(x)
+        error = p - y
+        self.w -= lr * error * x
+        self.b -= lr * error

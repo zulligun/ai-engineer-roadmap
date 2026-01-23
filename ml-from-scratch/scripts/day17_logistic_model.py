@@ -25,6 +25,10 @@ import numpy as np
 THRESHOLD = 0.5
 
 
+def safe_div(num, den):
+    return num / den if den != 0 else 0.0
+
+
 def sigmoid(z: float) -> float:
     return 1 / (1 + np.exp(-z))
 
@@ -92,8 +96,8 @@ TN = np.sum((labels == 0) & (y_validation == 0))
 FP = np.sum((labels == 1) & (y_validation == 0))
 FN = np.sum((labels == 0) & (y_validation == 1))
 
-accuracy = (TP + TN) / (TP + TN + FP + FN)
-precision = (TP) / (TP + FP)
-recall = TP / (TP + FN)
+accuracy = safe_div(TP + TN, TP + TN + FP + FN)
+precision = safe_div(TP, TP + FP)
+recall = safe_div(TP, TP + FN)
 
 print(f"Accuracy = {accuracy}, precision = {precision}, recall = {recall}")
